@@ -1,0 +1,314 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(135deg, #eef2ff, #f9f9ff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Container */
+.auth-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Card */
+.auth-card {
+    background: #ffffff;
+    width: 380px;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+/* Headings */
+.auth-card h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* Inputs */
+.input-group {
+    margin-bottom: 18px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.input-group input:focus {
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 3px rgba(79,70,229,0.1);
+}
+
+/* Button */
+.auth-btn {
+    width: 100%;
+    padding: 14px;
+    background: #4f46e5;
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.auth-btn:hover {
+    background: #4338ca;
+}
+
+/* Switch link */
+.switch {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #555;
+}
+
+.switch a {
+    color: #4f46e5;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.switch a:hover {
+    text-decoration: underline;
+}
+.dark-mode body {
+    background: #0f1220;
+}
+
+.dark-mode .auth-card {
+    background: #1b2040;
+}
+
+.dark-mode .switch a {
+    color: #a5b4fc;
+}
+/* Auth text fixes */
+.dark-mode .auth-card h2 {
+    color: #f9fafb;
+}
+
+.dark-mode .subtitle {
+    color: #c7c9d3;
+}
+
+.dark-mode .switch {
+    color: #9ca3af;
+}
+
+.dark-mode .switch a {
+    color: #818cf8;
+}
+.dark-mode input {
+    background: #0f1220;
+    border: 1px solid #2a2f55;
+}
+
+.dark-mode input:focus {
+    background: #151a2e;
+}
+/* ===== DARK MODE INPUT FIX ===== */
+
+.dark-mode input {
+    background: #0f1220;
+    color: #f9fafb;          /* ✅ typed text color */
+    border: 1px solid #2a2f55;
+}
+
+/* Placeholder text */
+.dark-mode input::placeholder {
+    color: #9ca3af;
+}
+
+/* Focus state */
+.dark-mode input:focus {
+    background: #151a2e;
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99,102,241,0.25);
+    color: #f9fafb;          /* keep text visible on focus */
+}
+/* Cursor (caret) color */
+.dark-mode input {
+    caret-color: #818cf8;
+}
+
+/* Chrome autofill fix */
+.dark-mode input:-webkit-autofill {
+    -webkit-text-fill-color: #f9fafb;
+    box-shadow: 0 0 0px 1000px #0f1220 inset;
+}
+/* Upload Course Page Styling */
+
+body{
+background:linear-gradient(135deg,#0f172a,#020617);
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+
+.auth-container{
+display:flex;
+justify-content:center;
+align-items:center;
+width:100%;
+}
+
+
+.auth-card{
+
+width:420px;
+
+background:#0f172a;
+
+padding:40px;
+
+border-radius:18px;
+
+box-shadow:0 20px 60px rgba(0,0,0,0.5);
+
+text-align:center;
+
+}
+
+
+.auth-card h2{
+
+font-size:28px;
+margin-bottom:25px;
+
+color:white;
+
+}
+
+
+.auth-card input,
+.auth-card textarea{
+
+width:100%;
+
+padding:12px 14px;
+
+margin-bottom:14px;
+
+border:none;
+
+border-radius:8px;
+
+background:#020617;
+
+color:white;
+
+font-size:14px;
+
+outline:none;
+
+border:1px solid #1e293b;
+
+}
+
+
+.auth-card textarea{
+
+height:80px;
+resize:none;
+
+}
+
+
+.auth-card input::placeholder,
+.auth-card textarea::placeholder{
+
+color:#64748b;
+
+}
+
+
+/* Upload Button */
+
+.auth-btn{
+
+width:100%;
+
+padding:14px;
+
+margin-top:10px;
+
+border:none;
+
+border-radius:10px;
+
+font-size:16px;
+
+font-weight:bold;
+
+color:white;
+
+background:linear-gradient(135deg,#6366f1,#8b5cf6);
+
+cursor:pointer;
+
+transition:0.3s;
+
+}
+
+
+.auth-btn:hover{
+
+transform:scale(1.03);
+
+box-shadow:0 10px 30px rgba(99,102,241,0.5);
+
+}
+.google-btn{
+
+display:flex;
+align-items:center;
+justify-content:center;
+gap:10px;
+
+width:100%;
+padding:12px;
+
+margin-top:10px;
+
+background:white;
+color:black;
+
+border-radius:8px;
+text-decoration:none;
+font-weight:600;
+
+}
+
+.google-btn img{
+width:20px;
+}

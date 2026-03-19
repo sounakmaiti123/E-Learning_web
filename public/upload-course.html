@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Upload Course | EduChain</title>
+<link rel="stylesheet" href="css/auth.css">
+</head>
+
+<body class="dark-mode">
+<script src="js/script.js"></script>
+
+<script>
+requireLogin();
+</script>
+<div class="auth-container">
+<div class="auth-card">
+
+<h2>Upload New Course</h2>
+
+<form id="courseForm">
+
+<input type="text" id="title" placeholder="Course Title" required>
+
+<input type="text" id="instructor" placeholder="Instructor Name" required>
+
+<input type="number" id="price" placeholder="Course Price" required>
+
+<input type="text" id="thumbnail" placeholder="Thumbnail Image URL">
+
+<textarea id="description" placeholder="Course Description"></textarea>
+
+<button type="submit" class="auth-btn">
+Upload Course
+</button>
+
+</form>
+
+</div>
+</div>
+
+
+<script>
+
+const form = document.getElementById("courseForm");
+
+form.addEventListener("submit", async (e)=>{
+
+e.preventDefault();
+
+const course = {
+
+title: document.getElementById("title").value,
+description: document.getElementById("description").value,
+instructor: document.getElementById("instructor").value,
+price: document.getElementById("price").value,
+thumbnail: document.getElementById("thumbnail").value
+
+};
+
+
+const response = await fetch("/api/upload-course",{
+
+method:"POST",
+headers:{ "Content-Type":"application/json" },
+body: JSON.stringify(course)
+
+});
+
+const data = await response.json();
+
+alert(data.message);
+
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Account | EduChain</title>
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+
+<body class="dark-mode">
+
+<div class="auth-container">
+    <div class="auth-card">
+
+        <h2>Create Account</h2>
+        <p class="subtitle">Join EduChain and start learning today</p>
+
+        <!-- Signup Form -->
+        <form id="signupForm">
+
+            <div class="input-group">
+                <input 
+                    type="text"
+                    id="name"
+                    placeholder="Full Name"
+                    required
+                >
+            </div>
+
+            <div class="input-group">
+                <input 
+                    type="email"
+                    id="email"
+                    placeholder="Email Address"
+                    required
+                >
+            </div>
+
+            <div class="input-group">
+                <input 
+                    type="password"
+                    id="password"
+                    placeholder="Password"
+                    required
+                >
+            </div>
+
+            <button type="submit" class="auth-btn">
+                Sign Up
+            </button>
+
+        </form>
+
+        <p class="switch">
+            Already have an account?
+            <a href="login.html">Sign In</a>
+        </p>
+
+    </div>
+</div>
+
+
+<script>
+
+const signupForm = document.getElementById("signupForm");
+
+signupForm.addEventListener("submit", async (e) => {
+
+e.preventDefault();
+
+const name = document.getElementById("name").value;
+const email = document.getElementById("email").value;
+const password = document.getElementById("password").value;
+
+const response = await fetch("/api/signup",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+name,
+email,
+password
+})
+
+});
+
+const data = await response.json();
+
+alert(data.message);
+
+if(data.message === "User registered successfully"){
+
+localStorage.setItem("user", JSON.stringify({
+    name: name,
+    email: email,
+    profilePic: null
+}));
+
+window.location.href="/index.html";
+
+}
+
+});
+
+</script>
+
+</body>
+</html>

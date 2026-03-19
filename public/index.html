@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>EduChain | Learn Without Boundaries</title>
+<link rel="stylesheet" href="css/style.css">
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+
+<body class="dark-mode">
+
+<!-- Navbar -->
+<header class="navbar">
+
+<div class="logo">
+<div class="logo-icon">
+<i class='bx bxs-graduation'></i>
+</div>
+<span>EduChain</span>
+</div>
+
+<nav class="nav-links">
+
+<a href="#featured-courses"><i class='bx bx-book'></i> Content</a>
+
+<a href="face-recognition.html" class="protected-link">
+<i class='bx bx-face'></i> Face Recognition
+</a>
+<a href="upload-course.html" class="protected-link">
+<i class='bx bx-upload'></i> Upload Course
+</a>
+<a href="#teacher">
+<i class='bx bx-user-plus'></i> Join as Teacher
+</a>
+
+<a href="#student">
+<i class='bx bx-user'></i> Join as Learner
+</a>
+
+</nav>
+
+<div class="nav-actions" id="navActions">
+
+<button id="themeToggle" class="theme-toggle">
+🌙
+</button>
+
+<a href="plus.html" class="btn-plus">
+✨ Get Plus
+</a>
+
+<div class="login-wrapper">
+    <a href="login.html" class="signin">Sign In</a>
+
+    <div class="login-popup" id="loginPopup">
+        Login
+    </div>
+</div>
+
+<a href="signup.html">
+<button class="btn-primary">Get Started</button>
+</a>
+
+</div>
+
+</header>
+
+
+<!-- Hero Section -->
+<section class="hero">
+
+<div class="hero-left fade-up">
+
+<span class="badge">✨ AI-Powered Learning Experience</span>
+
+<h1>Learn Without <br><span>Boundaries</span></h1>
+
+<p>
+Experience next-generation education with face recognition verification,
+interactive content, and personalized learning paths.
+</p>
+
+<div class="hero-buttons">
+
+<a href="signup.html" class="btn-primary">
+Start Learning Free <i class='bx bx-right-arrow-alt'></i>
+</a>
+
+<a href="intro.html" class="btn-demo">
+<i class='bx bx-play'></i>
+<span>Watch Demo</span>
+</a>
+
+</div>
+
+<div class="stats">
+
+<div>
+<h3>50K+</h3>
+<p>Active Learners</p>
+</div>
+
+<div>
+<h3>2,500+</h3>
+<p>Expert Teachers</p>
+</div>
+
+<div>
+<h3>10K+</h3>
+<p>Video Courses</p>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="hero-right fade-up" style="animation-delay:0.2s;">
+
+<div class="video-card">
+
+<a href="intro.html" class="video-thumb">
+
+<img src="media/intro-thumb.png.png" alt="EduChain Intro Video">
+
+<div class="play-overlay">
+<i class='bx bx-play'></i>
+</div>
+
+</a>
+
+<h3>Interactive Learning</h3>
+<p>Engage with live sessions and AI-powered tutoring</p>
+
+</div>
+
+
+<div class="member-card">
+
+<span>✨</span>
+
+<div>
+<strong>Plus Member</strong>
+<p>Face Recognition</p>
+</div>
+
+</div>
+
+<div class="joined-card">
+<span>A</span><span>B</span><span>C</span>
+<p>+2.5K joined today</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- Learning Content Section -->
+<section class="learning-content fade-up" style="animation-delay:0.3s;">
+
+<div class="section-header">
+
+<h2>Explore Our <span>Learning Content</span></h2>
+
+<p>
+Discover thousands of courses, tutorials, and resources designed
+to help you master any skill
+</p>
+
+</div>
+
+
+<div class="content-grid">
+
+<div class="content-card">
+<div class="icon video">🎥</div>
+<h3>Video Courses</h3>
+<p>HD video lessons with expert instructors</p>
+<span class="count">5,000+</span>
+</div>
+
+<div class="content-card">
+<div class="icon ebook">📘</div>
+<h3>E-Books & Articles</h3>
+<p>Comprehensive reading materials</p>
+<span class="count">3,200+</span>
+</div>
+
+<div class="content-card">
+<div class="icon test">📝</div>
+<h3>Practice Tests</h3>
+<p>Quizzes and assessments</p>
+<span class="count">1,500+</span>
+</div>
+
+<div class="content-card">
+<div class="icon audio">🎧</div>
+<h3>Audio Lessons</h3>
+<p>Learn on the go with podcasts</p>
+<span class="count">800+</span>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- Featured Courses -->
+<section id="featured-courses" class="featured-courses">
+
+<div class="courses-header">
+<h2>Featured Courses</h2>
+<a href="#" class="view-all">View All Courses →</a>
+</div>
+
+<div class="courses-grid">
+
+<div class="course-card">
+
+<div class="course-img">
+<span class="tag bestseller">Bestseller</span>
+<img src="https://images.unsplash.com/photo-1518770660439-4636190af475">
+</div>
+
+<div class="course-body">
+
+<h3>Complete Web Development Bootcamp</h3>
+
+<p class="author">Sarah Johnson</p>
+
+<div class="rating">
+⭐ 4.9 <span>12,500 students</span>
+</div>
+
+<div class="course-footer">
+<span class="price">$49.99</span>
+<button>Enroll Now</button>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="course-card">
+
+<div class="course-img">
+<span class="tag new">New</span>
+<img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4">
+</div>
+
+<div class="course-body">
+
+<h3>Machine Learning Fundamentals</h3>
+
+<p class="author">Dr. Michael Chen</p>
+
+<div class="rating">
+⭐ 4.8 <span>8,200 students</span>
+</div>
+
+<div class="course-footer">
+<span class="price">$59.99</span>
+<button>Enroll Now</button>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="course-card">
+
+<div class="course-img">
+<span class="tag popular">Popular</span>
+<img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71">
+</div>
+
+<div class="course-body">
+
+<h3>Digital Marketing Mastery</h3>
+
+<p class="author">Emily Davis</p>
+
+<div class="rating">
+⭐ 4.7 <span>15,300 students</span>
+</div>
+
+<div class="course-footer">
+<span class="price">$39.99</span>
+<button>Enroll Now</button>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- LOGIN AVATAR SCRIPT -->
+<!-- LOGIN AVATAR SCRIPT -->
+<script>
+
+document.addEventListener("DOMContentLoaded", function(){
+
+const user = JSON.parse(localStorage.getItem("user"));
+
+if(!user) return;
+
+const nav = document.getElementById("navActions");
+
+/* hide login buttons */
+
+const signin = nav.querySelector(".signin");
+const signup = nav.querySelector(".btn-primary");
+
+if(signin) signin.style.display = "none";
+if(signup) signup.style.display = "none";
+
+/* create avatar */
+
+const avatarContainer = document.createElement("div");
+avatarContainer.className = "avatar-container";
+
+avatarContainer.innerHTML = `
+<div class="avatar" id="avatarBtn" title="${user.name}">
+${user.profilePic 
+? `<img src="${user.profilePic}" alt="avatar">` 
+: user.name.charAt(0).toUpperCase()}
+</div>
+
+<div class="avatar-dropdown" id="avatarMenu">
+
+<div class="avatar-info">
+<strong>${user.name}</strong>
+<span>${user.email}</span>
+</div>
+
+<a href="dashboard.html">Dashboard</a>
+<a href="#" id="openProfile">Profile</a>
+<a href="#" id="logoutBtn">Logout</a>
+
+</div>
+
+`;
+
+nav.appendChild(avatarContainer);
+
+
+/* dropdown toggle */
+
+document.getElementById("avatarBtn").addEventListener("click", function(e){
+
+e.stopPropagation();
+
+document.getElementById("avatarMenu").classList.toggle("show-menu");
+
+});
+
+
+/* close dropdown when clicking outside */
+
+document.addEventListener("click", function(){
+
+const menu = document.getElementById("avatarMenu");
+if(menu) menu.classList.remove("show-menu");
+
+});
+
+
+/* logout */
+
+document.getElementById("logoutBtn").addEventListener("click", function(){
+
+localStorage.removeItem("user");
+
+alert("Logged out successfully");
+
+window.location.href = "/index.html";
+
+});
+
+});
+window.addEventListener("load", function(){
+
+const popup = document.getElementById("loginPopup");
+/* PROFILE BUTTON CLICK */
+
+document.getElementById("openProfile").addEventListener("click", function(e){
+
+e.preventDefault();
+
+document.getElementById("profileModal").style.display = "flex";
+
+});
+
+/* check if user is logged in */
+
+const user = localStorage.getItem("user");
+
+if(!user && popup){
+
+popup.classList.add("show-popup");
+
+setTimeout(()=>{
+popup.classList.remove("show-popup");
+},4000);
+
+}
+
+});
+/* CLOSE PROFILE MODAL */
+
+function closeProfile(){
+document.getElementById("profileModal").style.display = "none";
+}
+
+
+/* SAVE PROFILE IMAGE */
+
+function saveProfile(){
+
+const fileInput = document.getElementById("profileInput");
+const file = fileInput.files[0];
+
+if(!file){
+alert("Select an image first");
+return;
+}
+
+const reader = new FileReader();
+
+reader.onload = async function(e){
+
+let user = JSON.parse(localStorage.getItem("user"));
+
+const response = await fetch("/api/update-profile", {
+
+method: "POST",
+headers: {
+"Content-Type": "application/json"
+},
+body: JSON.stringify({
+email: user.email,
+profilePic: e.target.result
+})
+
+});
+
+const data = await response.json();
+
+/* update localStorage */
+
+localStorage.setItem("user", JSON.stringify(data.user));
+
+alert("Profile updated!");
+
+location.reload();
+
+};
+
+reader.readAsDataURL(file);
+
+}
+</script>
+
+
+<footer class="footer">
+
+<div class="back-to-top">
+<a href="#">↑ Back to top</a>
+</div>
+
+<div class="footer-content">
+
+<div class="footer-column brand">
+
+<div class="footer-logo">
+<i class='bx bxs-graduation'></i>
+<span>EduChain</span>
+</div>
+
+<p>
+AI-powered learning platform with secure face recognition
+and personalized education.
+</p>
+
+</div>
+
+<div class="footer-column">
+<h4>Get to Know</h4>
+<a href="#">About Us</a>
+<a href="#">Careers</a>
+<a href="#">Research & AI</a>
+<a href="#">Press & Media</a>
+</div>
+
+<div class="footer-column">
+<h4>Learn With Us</h4>
+<a href="#">Browse Courses</a>
+<a href="#">Join as Student</a>
+<a href="#">Join as Teacher</a>
+<a href="#">EduChain Plus</a>
+</div>
+
+<div class="footer-column">
+<h4>Support</h4>
+<a href="#">Help Center</a>
+<a href="#">Privacy Policy</a>
+<a href="#">Terms & Conditions</a>
+<a href="#">Contact Us</a>
+</div>
+
+<div class="footer-column socials">
+
+<h4>Connect</h4>
+
+<div class="footer-socials">
+<a href="#"><i class='bx bxl-facebook'></i></a>
+<a href="#"><i class='bx bxl-twitter'></i></a>
+<a href="#"><i class='bx bxl-instagram'></i></a>
+<a href="#"><i class='bx bxl-linkedin'></i></a>
+<a href="#"><i class='bx bxl-youtube'></i></a>
+</div>
+
+</div>
+
+</div>
+
+<div class="footer-bottom">
+© 2026 <strong>EduChain</strong>. All Rights Reserved.
+</div>
+
+</footer>
+<!-- PROFILE POPUP -->
+<div id="profileModal" class="profile-modal">
+
+<div class="profile-box">
+
+<h3>Update Profile Photo</h3>
+
+<input type="file" id="profileInput" accept="image/*">
+
+<button onclick="saveProfile()">Upload</button>
+
+<button onclick="closeProfile()">Cancel</button>
+
+</div>
+
+</div>
+<script src="js/script.js"></script>
+</body>
+</html>

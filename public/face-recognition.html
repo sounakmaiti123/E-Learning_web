@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Face Recognition | EduChain</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+
+<body class="dark-mode">
+<script src="js/script.js"></script>
+
+<script>
+requireLogin();
+</script>
+<!-- Navbar (reuse same navbar) -->
+<header class="navbar">
+    <div class="logo">
+        <div class="logo-icon">
+            <i class='bx bxs-graduation'></i>
+        </div>
+        <span>EduChain</span>
+    </div>
+
+    <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#featured-courses">Content</a>
+        <a href="face-recognition.html" class="active">Face Recognition</a>
+    </nav>
+
+    <div class="nav-actions">
+        <a href="plus.html" class="btn-plus">✨ Get Plus</a>
+        <a href="login.html" class="signin">Sign In</a>
+    </div>
+</header>
+<section class="face-section">
+
+    <div class="face-left">
+        <h1>
+            Face Recognition <br>
+            <span>Powered Learning</span>
+        </h1>
+
+        <p>
+            Experience the future of online education with our AI-powered face
+            recognition system. Ensure authenticity, track engagement, and
+            personalize your learning journey like never before.
+        </p>
+
+        <div class="face-feature">
+            <i class='bx bx-shield'></i>
+            <div>
+                <h4>Secure Verification</h4>
+                <p>Only enrolled students access premium content</p>
+            </div>
+        </div>
+
+        <div class="face-feature">
+            <i class='bx bx-lock'></i>
+            <div>
+                <h4>Privacy First</h4>
+                <p>Encrypted biometric data, never shared</p>
+            </div>
+        </div>
+
+        <div class="face-feature">
+            <i class='bx bx-show'></i>
+            <div>
+                <h4>Attention Tracking</h4>
+                <p>AI monitors engagement to improve learning</p>
+            </div>
+        </div>
+
+        <a href="plus.html" class="btn-primary">
+            Upgrade to Plus ✨
+        </a>
+    </div>
+
+    <div class="face-right">
+        <div class="camera-card">
+           <div class="camera-box">
+    <video id="cameraFeed" autoplay muted playsinline></video>
+</div>
+            <div class="camera-status">
+                <span class="dot"></span> Camera Ready
+                <button class="btn-outline" id="startCamera">
+    Start Verification
+</button>
+
+            </div>
+
+            <div class="camera-info">
+                <span>✔ Real-time detection</span>
+                <span>✔ 99.9% accuracy</span>
+                <span>✔ GDPR compliant</span>
+                <span>✔ 24/7 support</span>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="js/face.js"></script>
+</body>
+</html>
+
