@@ -1,12 +1,13 @@
+require('dotenv').config();
 const mongoose = require("mongoose");
 
 const connectDB = async () => {
     try {
-        await mongoose.connect("mongodb://127.0.0.1:27017/educhain");
+        await mongoose.connect(process.env.MONGO_URI);
 
         console.log("MongoDB Connected");
     } catch (error) {
-        console.log(error);
+        console.error(error);
         process.exit(1);
     }
 };

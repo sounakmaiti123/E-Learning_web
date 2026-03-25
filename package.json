@@ -9,6 +9,7 @@
   "author": "Sounak",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^17.3.1",
     "express": "^4.19.2",
     "express-session": "^1.19.0",
     "mongoose": "^9.2.4",

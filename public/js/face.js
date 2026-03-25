@@ -27,3 +27,4 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 });
+alert("Face Recognition feature will be available soon!");
