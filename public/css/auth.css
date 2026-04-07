@@ -312,3 +312,107 @@ font-weight:600;
 .google-btn img{
 width:20px;
 }
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0a0f2c, #020617);
+    color: white;
+}
+
+/* MAIN SECTION */
+.upload-section {
+    display: flex;
+    height: 100vh;
+    padding: 60px;
+    gap: 40px;
+}
+
+/* LEFT SIDE */
+.upload-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.upload-left h1 {
+    font-size: 48px;
+    font-weight: 700;
+}
+
+.upload-left span {
+    color: #7c8cff;
+}
+
+.upload-left p {
+    margin-top: 15px;
+    color: #9aa4c7;
+    max-width: 400px;
+}
+
+.features {
+    margin-top: 30px;
+}
+
+.features div {
+    margin: 10px 0;
+    color: #cbd5f5;
+}
+
+/* RIGHT SIDE */
+.upload-right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* CARD */
+.upload-card {
+    width: 100%;
+    max-width: 420px;
+    padding: 30px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(124, 140, 255, 0.2);
+}
+
+/* FORM */
+.upload-card h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.upload-card input,
+.upload-card textarea {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background: #0a0f2c;
+    color: white;
+}
+
+.upload-card textarea {
+    height: 80px;
+}
+
+/* BUTTON */
+.upload-card button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    background: linear-gradient(90deg, #6a5cff, #8f6bff);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.upload-card button:hover {
+    transform: scale(1.05);
+}
