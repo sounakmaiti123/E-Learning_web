@@ -1985,3 +1985,32 @@ width:100%;
 height:100%;
 object-fit:cover;
 }
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background: radial-gradient(circle at top left, #0f172a, #020617);
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Canvas full screen */
+#bgCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+/* Optional glow overlay */
+body::after {
+  content: "";
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: radial-gradient(circle at 70% 30%, rgba(99,102,241,0.15), transparent 40%);
+  z-index: -1;
+}
