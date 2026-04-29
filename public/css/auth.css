@@ -288,29 +288,112 @@ transform:scale(1.03);
 box-shadow:0 10px 30px rgba(99,102,241,0.5);
 
 }
-.google-btn{
+/* ===== GOOGLE AUTH BUTTON ===== */
 
-display:flex;
-align-items:center;
-justify-content:center;
-gap:10px;
-
-width:100%;
-padding:12px;
-
-margin-top:10px;
-
-background:white;
-color:black;
-
-border-radius:8px;
-text-decoration:none;
-font-weight:600;
-
+.google-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    padding: 13px 16px;
+    margin-top: 0;
+    background: rgba(255, 255, 255, 0.06);
+    color: #e5e7eb;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
-.google-btn img{
-width:20px;
+.google-btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, 
+        rgba(66, 133, 244, 0.08),
+        rgba(234, 67, 53, 0.08),
+        rgba(251, 188, 5, 0.08),
+        rgba(52, 168, 83, 0.08)
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.google-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 
+        0 8px 25px rgba(66, 133, 244, 0.15),
+        0 0 0 1px rgba(66, 133, 244, 0.1);
+    color: #ffffff;
+}
+
+.google-btn:hover::before {
+    opacity: 1;
+}
+
+.google-btn svg {
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.google-btn span {
+    position: relative;
+    z-index: 1;
+}
+
+/* ===== AUTH DIVIDER ===== */
+
+.auth-divider {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    gap: 12px;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent,
+        rgba(255, 255, 255, 0.15),
+        transparent
+    );
+}
+
+.auth-divider span {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ===== GOOGLE ERROR ===== */
+
+.google-error {
+    margin-top: 12px;
+    padding: 10px 14px;
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: 10px;
+    animation: fadeIn 0.4s ease;
+}
+
+.google-error p {
+    color: #fca5a5;
+    font-size: 13px;
+    margin: 0;
 }
 body {
     margin: 0;

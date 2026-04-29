@@ -2,13 +2,23 @@ const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
     name: String,
-    email: String,
+    email: { type: String, required: true },
     password: String,
-    role: String,   // ✅ comma added here
+    role: { type: String, default: "student" },
+
+    googleId: {
+        type: String,
+        default: null
+    },
 
     profilePic: {
         type: String,
         default: null
+    },
+
+    createdAt: {
+        type: Date,
+        default: Date.now
     }
 
 });
