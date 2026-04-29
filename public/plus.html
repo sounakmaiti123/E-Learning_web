@@ -1,32 +1,446 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>EduChain Plus</title>
-    <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EduChain Plus | Premium Learning Experience</title>
+<meta name="description" content="Unlock premium features with EduChain Plus — face recognition, unlimited courses, AI tutoring, and more.">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/plus.css">
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
+
 <body class="dark-mode">
+<canvas id="bgCanvas"></canvas>
 <script src="js/script.js"></script>
+<script>requireLogin();</script>
 
-<script>
-requireLogin();
-</script>
-    <div style="
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        flex-direction: column;
-        gap: 16px;
-    ">
-        <h1>✨ EduChain Plus</h1>
-        <p>Premium learning experience coming soon.</p>
+<!-- Navbar -->
+<header class="navbar">
+<div class="logo">
+<div class="logo-icon"><i class='bx bxs-graduation'></i></div>
+<span>EduChain</span>
+</div>
+<nav class="nav-links">
+<a href="index.html"><i class='bx bx-home'></i> Home</a>
+<a href="index.html#featured-courses"><i class='bx bx-book'></i> Courses</a>
+<a href="face-recognition.html" class="protected-link"><i class='bx bx-face'></i> Face Recognition</a>
+</nav>
+<div class="nav-actions" id="navActions">
+<button id="themeToggle" class="theme-toggle">🌙</button>
+<a href="plus.html" class="btn-plus active-plus">✨ Plus</a>
+<div class="login-wrapper">
+    <a href="login.html" class="signin">Sign In</a>
+</div>
+<a href="signup.html"><button class="btn-primary">Get Started</button></a>
+</div>
+</header>
 
-        <a href="index.html" style="color:#818cf8;">
-            ← Back to Home
-        </a>
-    </div>
+<!-- Hero Section -->
+<section class="plus-hero fade-up">
+<div class="plus-hero-badge">
+<span class="sparkle">✨</span> EDUCHAIN PLUS
+</div>
+<h1>Unlock Your <span class="gradient-text">Full Potential</span></h1>
+<p class="plus-hero-sub">
+Get unlimited access to premium courses, AI-powered tutoring, face recognition verification, and exclusive learning tools.
+</p>
 
+<div class="plus-hero-stats">
+<div class="ph-stat">
+<i class='bx bx-book-open'></i>
+<div><strong>10,000+</strong><span>Premium Courses</span></div>
+</div>
+<div class="ph-stat">
+<i class='bx bx-brain'></i>
+<div><strong>AI Tutor</strong><span>24/7 Support</span></div>
+</div>
+<div class="ph-stat">
+<i class='bx bx-certification'></i>
+<div><strong>Certificates</strong><span>Verified</span></div>
+</div>
+</div>
+</section>
+
+<!-- Features Grid -->
+<section class="plus-features fade-up" style="animation-delay:0.15s">
+<div class="section-title">
+<h2>Why Go <span class="gradient-text">Plus?</span></h2>
+<p>Everything you need to accelerate your learning journey</p>
+</div>
+<div class="features-grid">
+<div class="feature-card" data-feature="courses">
+<div class="fc-icon purple"><i class='bx bx-book-reader'></i></div>
+<h3>Unlimited Courses</h3>
+<p>Access our entire library of 10,000+ premium courses across all categories.</p>
+<div class="fc-tag">Most Popular</div>
+</div>
+<div class="feature-card" data-feature="ai">
+<div class="fc-icon blue"><i class='bx bx-bot'></i></div>
+<h3>AI-Powered Tutoring</h3>
+<p>Get personalized help from our AI tutor anytime, anywhere.</p>
+<div class="fc-tag">New</div>
+</div>
+<div class="feature-card" data-feature="face">
+<div class="fc-icon indigo"><i class='bx bx-face'></i></div>
+<h3>Face Recognition</h3>
+<p>Secure exam verification with advanced biometric technology.</p>
+<div class="fc-tag">Exclusive</div>
+</div>
+<div class="feature-card" data-feature="cert">
+<div class="fc-icon green"><i class='bx bx-certification'></i></div>
+<h3>Verified Certificates</h3>
+<p>Earn industry-recognized certificates to boost your career.</p>
+</div>
+<div class="feature-card" data-feature="download">
+<div class="fc-icon orange"><i class='bx bx-download'></i></div>
+<h3>Offline Access</h3>
+<p>Download courses and learn without internet connectivity.</p>
+</div>
+<div class="feature-card" data-feature="priority">
+<div class="fc-icon pink"><i class='bx bx-support'></i></div>
+<h3>Priority Support</h3>
+<p>Get help from real humans within 1 hour, guaranteed.</p>
+</div>
+</div>
+</section>
+
+<!-- Pricing Section -->
+<section class="plus-pricing fade-up" id="pricing" style="animation-delay:0.2s">
+<div class="section-title">
+<h2>Choose Your <span class="gradient-text">Plan</span></h2>
+<p>Flexible pricing that grows with you</p>
+</div>
+
+<div class="billing-toggle">
+<span class="toggle-label" id="monthlyLabel">Monthly</span>
+<label class="toggle-switch">
+<input type="checkbox" id="billingToggle">
+<span class="toggle-slider"></span>
+</label>
+<span class="toggle-label" id="yearlyLabel">Yearly</span>
+<span class="save-badge">Save 40%</span>
+</div>
+
+<div class="pricing-grid">
+
+<!-- Free Plan -->
+<div class="pricing-card" id="freePlan">
+<div class="pc-header">
+<span class="pc-name">Free</span>
+<div class="pc-price">
+<span class="currency">$</span>
+<span class="amount" data-monthly="0" data-yearly="0">0</span>
+<span class="period">/month</span>
+</div>
+<p class="pc-desc">Get started with basic features</p>
+</div>
+<ul class="pc-features">
+<li><i class='bx bx-check'></i> 5 free courses</li>
+<li><i class='bx bx-check'></i> Basic progress tracking</li>
+<li><i class='bx bx-check'></i> Community forum access</li>
+<li class="disabled"><i class='bx bx-x'></i> AI Tutoring</li>
+<li class="disabled"><i class='bx bx-x'></i> Face Recognition</li>
+<li class="disabled"><i class='bx bx-x'></i> Certificates</li>
+<li class="disabled"><i class='bx bx-x'></i> Offline Access</li>
+</ul>
+<button class="pc-btn outline" onclick="handlePlan('free')">Current Plan</button>
+</div>
+
+<!-- Plus Plan -->
+<div class="pricing-card featured" id="plusPlan">
+<div class="pc-badge">⚡ Most Popular</div>
+<div class="pc-header">
+<span class="pc-name">Plus</span>
+<div class="pc-price">
+<span class="currency">$</span>
+<span class="amount" data-monthly="19" data-yearly="11">19</span>
+<span class="period">/month</span>
+</div>
+<p class="pc-desc">Perfect for serious learners</p>
+</div>
+<ul class="pc-features">
+<li><i class='bx bx-check'></i> Unlimited courses</li>
+<li><i class='bx bx-check'></i> Advanced analytics</li>
+<li><i class='bx bx-check'></i> AI Tutor (100 queries/day)</li>
+<li><i class='bx bx-check'></i> Face Recognition</li>
+<li><i class='bx bx-check'></i> Verified Certificates</li>
+<li><i class='bx bx-check'></i> Offline Access</li>
+<li class="disabled"><i class='bx bx-x'></i> Priority Support</li>
+</ul>
+<button class="pc-btn primary" onclick="handlePlan('plus')">Get Plus</button>
+</div>
+
+<!-- Pro Plan -->
+<div class="pricing-card" id="proPlan">
+<div class="pc-header">
+<span class="pc-name">Pro</span>
+<div class="pc-price">
+<span class="currency">$</span>
+<span class="amount" data-monthly="39" data-yearly="23">39</span>
+<span class="period">/month</span>
+</div>
+<p class="pc-desc">For teams and professionals</p>
+</div>
+<ul class="pc-features">
+<li><i class='bx bx-check'></i> Everything in Plus</li>
+<li><i class='bx bx-check'></i> Unlimited AI Tutor</li>
+<li><i class='bx bx-check'></i> 1-on-1 Mentorship</li>
+<li><i class='bx bx-check'></i> Priority Support</li>
+<li><i class='bx bx-check'></i> Team Management</li>
+<li><i class='bx bx-check'></i> Custom Learning Paths</li>
+<li><i class='bx bx-check'></i> API Access</li>
+</ul>
+<button class="pc-btn primary" onclick="handlePlan('pro')">Get Pro</button>
+</div>
+
+</div>
+</section>
+
+<!-- Comparison Table -->
+<section class="plus-comparison fade-up" style="animation-delay:0.25s">
+<div class="section-title">
+<h2>Compare <span class="gradient-text">Plans</span></h2>
+<p>See exactly what you get with each plan</p>
+</div>
+<div class="comparison-table-wrap">
+<table class="comparison-table" id="comparisonTable">
+<thead>
+<tr>
+<th>Feature</th>
+<th>Free</th>
+<th class="highlight-col">Plus</th>
+<th>Pro</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>Courses</td><td>5</td><td class="highlight-col">Unlimited</td><td>Unlimited</td></tr>
+<tr><td>Video Quality</td><td>720p</td><td class="highlight-col">1080p</td><td>4K</td></tr>
+<tr><td>AI Tutor</td><td><i class='bx bx-x red'></i></td><td class="highlight-col">100/day</td><td>Unlimited</td></tr>
+<tr><td>Certificates</td><td><i class='bx bx-x red'></i></td><td class="highlight-col"><i class='bx bx-check green'></i></td><td><i class='bx bx-check green'></i></td></tr>
+<tr><td>Face Recognition</td><td><i class='bx bx-x red'></i></td><td class="highlight-col"><i class='bx bx-check green'></i></td><td><i class='bx bx-check green'></i></td></tr>
+<tr><td>Offline Access</td><td><i class='bx bx-x red'></i></td><td class="highlight-col"><i class='bx bx-check green'></i></td><td><i class='bx bx-check green'></i></td></tr>
+<tr><td>Priority Support</td><td><i class='bx bx-x red'></i></td><td class="highlight-col"><i class='bx bx-x red'></i></td><td><i class='bx bx-check green'></i></td></tr>
+<tr><td>1-on-1 Mentorship</td><td><i class='bx bx-x red'></i></td><td class="highlight-col"><i class='bx bx-x red'></i></td><td><i class='bx bx-check green'></i></td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<!-- Testimonials -->
+<section class="plus-testimonials fade-up" style="animation-delay:0.3s">
+<div class="section-title">
+<h2>Loved by <span class="gradient-text">Learners</span></h2>
+<p>Join thousands of satisfied Plus members</p>
+</div>
+<div class="testimonials-grid">
+<div class="testimonial-card">
+<div class="tc-stars">⭐⭐⭐⭐⭐</div>
+<p>"EduChain Plus completely transformed how I learn. The AI tutor is incredible!"</p>
+<div class="tc-author">
+<div class="tc-avatar">S</div>
+<div><strong>Sarah Mitchell</strong><span>Web Developer</span></div>
+</div>
+</div>
+<div class="testimonial-card">
+<div class="tc-stars">⭐⭐⭐⭐⭐</div>
+<p>"The face recognition feature gives me peace of mind during certifications. Worth every penny."</p>
+<div class="tc-author">
+<div class="tc-avatar">J</div>
+<div><strong>James Rodriguez</strong><span>Data Scientist</span></div>
+</div>
+</div>
+<div class="testimonial-card">
+<div class="tc-stars">⭐⭐⭐⭐⭐</div>
+<p>"Offline access lets me learn on my commute. I've completed 15 courses in 2 months!"</p>
+<div class="tc-author">
+<div class="tc-avatar">A</div>
+<div><strong>Aisha Patel</strong><span>UX Designer</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FAQ Section -->
+<section class="plus-faq fade-up" style="animation-delay:0.35s">
+<div class="section-title">
+<h2>Frequently Asked <span class="gradient-text">Questions</span></h2>
+<p>Everything you need to know about Plus</p>
+</div>
+<div class="faq-list" id="faqList">
+<div class="faq-item">
+<button class="faq-question" onclick="toggleFaq(this)">
+<span>Can I cancel my subscription anytime?</span>
+<i class='bx bx-plus'></i>
+</button>
+<div class="faq-answer">
+<p>Yes! You can cancel your subscription at any time from your dashboard. You'll continue to have access until the end of your current billing period.</p>
+</div>
+</div>
+<div class="faq-item">
+<button class="faq-question" onclick="toggleFaq(this)">
+<span>Is there a free trial available?</span>
+<i class='bx bx-plus'></i>
+</button>
+<div class="faq-answer">
+<p>We offer a 7-day free trial for new Plus subscribers. No credit card required to start your trial.</p>
+</div>
+</div>
+<div class="faq-item">
+<button class="faq-question" onclick="toggleFaq(this)">
+<span>What payment methods do you accept?</span>
+<i class='bx bx-plus'></i>
+</button>
+<div class="faq-answer">
+<p>We accept all major credit cards (Visa, MasterCard, American Express), PayPal, and UPI for Indian users.</p>
+</div>
+</div>
+<div class="faq-item">
+<button class="faq-question" onclick="toggleFaq(this)">
+<span>Can I switch between plans?</span>
+<i class='bx bx-plus'></i>
+</button>
+<div class="faq-answer">
+<p>Absolutely! You can upgrade or downgrade your plan at any time. The price difference will be prorated.</p>
+</div>
+</div>
+<div class="faq-item">
+<button class="faq-question" onclick="toggleFaq(this)">
+<span>Do certificates have real value?</span>
+<i class='bx bx-plus'></i>
+</button>
+<div class="faq-answer">
+<p>Our certificates are recognized by 500+ companies worldwide. Each certificate has a unique verification code that employers can verify on our platform.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CTA Section -->
+<section class="plus-cta fade-up" style="animation-delay:0.4s">
+<div class="cta-glow"></div>
+<h2>Ready to Start Your <span class="gradient-text">Premium Journey?</span></h2>
+<p>Join 50,000+ learners who upgraded to Plus</p>
+<div class="cta-buttons">
+<a href="#pricing" class="btn-primary cta-main">
+Get Started with Plus <i class='bx bx-right-arrow-alt'></i>
+</a>
+<a href="index.html" class="btn-demo cta-secondary">
+<i class='bx bx-home'></i> Back to Home
+</a>
+</div>
+</section>
+
+<!-- Payment Modal -->
+<div class="payment-modal" id="paymentModal">
+<div class="payment-overlay" onclick="closePayment()"></div>
+<div class="payment-box">
+<button class="payment-close" onclick="closePayment()"><i class='bx bx-x'></i></button>
+<div class="payment-header">
+<div class="payment-icon">✨</div>
+<h3 id="paymentTitle">Upgrade to Plus</h3>
+<p id="paymentDesc">Start your premium learning journey</p>
+</div>
+<div class="payment-summary" id="paymentSummary">
+<div class="ps-row"><span>Plan</span><strong id="psPlan">Plus</strong></div>
+<div class="ps-row"><span>Billing</span><strong id="psBilling">Monthly</strong></div>
+<div class="ps-row total"><span>Total</span><strong id="psTotal">$19/mo</strong></div>
+</div>
+<form id="paymentForm" onsubmit="processPayment(event)">
+<div class="form-group">
+<label>Card Number</label>
+<input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" required>
+</div>
+<div class="form-row">
+<div class="form-group">
+<label>Expiry</label>
+<input type="text" id="cardExpiry" placeholder="MM/YY" maxlength="5" required>
+</div>
+<div class="form-group">
+<label>CVV</label>
+<input type="text" id="cardCvv" placeholder="123" maxlength="3" required>
+</div>
+</div>
+<div class="form-group">
+<label>Name on Card</label>
+<input type="text" id="cardName" placeholder="John Doe" required>
+</div>
+<button type="submit" class="payment-submit" id="payBtn">
+<span class="pay-text">Pay Now</span>
+<span class="pay-loader" style="display:none"><i class='bx bx-loader-alt bx-spin'></i> Processing...</span>
+</button>
+</form>
+<p class="payment-secure"><i class='bx bx-lock-alt'></i> Secured with 256-bit SSL encryption</p>
+</div>
+</div>
+
+<!-- Success Modal -->
+<div class="success-modal" id="successModal">
+<div class="success-overlay" onclick="closeSuccess()"></div>
+<div class="success-box">
+<div class="success-checkmark">
+<i class='bx bx-check'></i>
+</div>
+<h3>Welcome to EduChain Plus! 🎉</h3>
+<p>Your premium features are now activated.</p>
+<button onclick="closeSuccess()" class="pc-btn primary" style="margin-top:20px;width:100%">Start Learning</button>
+</div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+<div class="back-to-top"><a href="#">↑ Back to top</a></div>
+<div class="footer-content">
+<div class="footer-column brand">
+<div class="footer-logo">
+<i class='bx bxs-graduation'></i>
+<span>EduChain</span>
+</div>
+<p>AI-powered learning platform with secure face recognition and personalized education.</p>
+</div>
+<div class="footer-column">
+<h4>Get to Know</h4>
+<a href="#">About Us</a>
+<a href="#">Careers</a>
+<a href="#">Research & AI</a>
+</div>
+<div class="footer-column">
+<h4>Learn With Us</h4>
+<a href="index.html#featured-courses">Browse Courses</a>
+<a href="plus.html">EduChain Plus</a>
+<a href="signup.html">Join as Student</a>
+</div>
+<div class="footer-column">
+<h4>Support</h4>
+<a href="#">Help Center</a>
+<a href="#">Privacy Policy</a>
+<a href="#">Terms & Conditions</a>
+</div>
+<div class="footer-column socials">
+<h4>Connect</h4>
+<div class="footer-socials">
+<a href="#"><i class='bx bxl-facebook'></i></a>
+<a href="#"><i class='bx bxl-twitter'></i></a>
+<a href="#"><i class='bx bxl-instagram'></i></a>
+<a href="#"><i class='bx bxl-linkedin'></i></a>
+</div>
+</div>
+</div>
+<div class="footer-bottom">© 2026 <strong>EduChain</strong>. All Rights Reserved.</div>
+</footer>
+
+<!-- Profile Modal (shared) -->
+<div id="profileModal" class="profile-modal">
+<div class="profile-box">
+<h3>Update Profile Photo</h3>
+<input type="file" id="profileInput" accept="image/*">
+<button onclick="saveProfile()">Upload</button>
+<button onclick="closeProfile()">Cancel</button>
+</div>
+</div>
+
+<script src="js/background.js"></script>
+<script src="js/plus.js"></script>
 </body>
 </html>
