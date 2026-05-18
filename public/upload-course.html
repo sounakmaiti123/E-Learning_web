@@ -3,6 +3,72 @@
 <head>
 <title>Upload Course | EduChain</title>
 <link rel="stylesheet" href="css/auth.css">
+<style>
+    .file-upload-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 18px;
+        text-align: left;
+    }
+    .file-upload-group label {
+        font-size: 13px;
+        font-weight: 600;
+        color: #818cf8;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+    }
+    .file-upload-group input[type="file"] {
+        background: #151a2e;
+        color: #e5e7eb;
+        border: 1px solid #2a2f55;
+        padding: 12px;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: all 0.3s ease;
+    }
+    .file-upload-group input[type="file"]::file-selector-button {
+        background: #6366f1;
+        color: #ffffff;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 6px;
+        margin-right: 12px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: background 0.3s ease;
+    }
+    .file-upload-group input[type="file"]::file-selector-button:hover {
+        background: #4f46e5;
+    }
+    .file-upload-group input[type="file"]:hover {
+        border-color: #6366f1;
+    }
+    /* Spinner style for uploads */
+    .spinner {
+        display: none;
+        width: 24px;
+        height: 24px;
+        border: 3px solid rgba(255,255,255,0.3);
+        border-radius: 50%;
+        border-top-color: #ffffff;
+        animation: spin 1s ease-in-out infinite;
+        margin: 0 auto;
+    }
+    @keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+    button[type="submit"] {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+        padding: 14px;
+        font-weight: 600;
+    }
+</style>
 </head>
 <body class="dark-mode">
 <canvas id="bgCanvas"></canvas>
@@ -44,13 +110,24 @@ requireLogin();
 
                 <input type="text" id="instructor" placeholder="Instructor Name" required>
 
-                <input type="number" id="price" placeholder="Course Price" required>
+                <input type="number" id="price" placeholder="Course Price ($)" required>
 
-                <input type="text" id="thumbnail" placeholder="Thumbnail Image URL">
+                <div class="file-upload-group">
+                    <label for="thumbnail">Course Thumbnail</label>
+                    <input type="file" id="thumbnail" accept="image/*" required>
+                </div>
 
-                <textarea id="description" placeholder="Course Description"></textarea>
+                <div class="file-upload-group">
+                    <label for="video">Course Video (MP4)</label>
+                    <input type="file" id="video" accept="video/*" required>
+                </div>
 
-                <button type="submit">Upload Course</button>
+                <textarea id="description" placeholder="Course Description" required></textarea>
+
+                <button type="submit">
+                    <span id="btnText">Upload Course</span>
+                    <div id="btnSpinner" class="spinner"></div>
+                </button>
 
             </form>
 
