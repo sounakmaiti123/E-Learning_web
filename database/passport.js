@@ -18,8 +18,9 @@ passport.deserializeUser(async (id, done) => {
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "/auth/google/callback"
-}, async (accessToken, refreshToken, profile, done) => {
+    callbackURL: "/auth/google/callback",
+    passReqToCallback: true
+}, async (req, accessToken, refreshToken, profile, done) => {
 
     try {
 
@@ -41,13 +42,17 @@ passport.use(new GoogleStrategy({
             return done(null, user);
         }
 
+        const role = req.session.pendingRole || "student";
+        // Clean up session
+        delete req.session.pendingRole;
+
         // Create new user
         user = new User({
             name: profile.displayName,
             email: profile.emails[0].value,
             googleId: profile.id,
             profilePic: profile.photos[0]?.value || null,
-            role: "student"
+            role: role
         });
 
         await user.save();

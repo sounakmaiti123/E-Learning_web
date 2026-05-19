@@ -8,7 +8,7 @@ router.post("/signup", async (req, res) => {
 
     try {
 
-        const { name, email, password } = req.body;
+        const { name, email, password, role } = req.body;
 
         const existingUser = await User.findOne({ email });
 
@@ -20,13 +20,20 @@ router.post("/signup", async (req, res) => {
             name,
             email,
             password,
-            role: "student"
+            role: role || "student"
         });
 
         await user.save();
 
         res.json({
-            message: "User registered successfully"
+            message: "User registered successfully",
+            user: {
+                _id: user._id,
+                name: user.name,
+                email: user.email,
+                role: user.role,
+                profilePic: user.profilePic || null
+            }
         });
 
     } catch (error) {

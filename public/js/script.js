@@ -199,6 +199,21 @@ window.location.href = "/login.html";
 }
 
 }
+
+/* TEACHER ACCESS GUARD */
+function requireTeacher(){
+    const user = JSON.parse(localStorage.getItem("user"));
+    if(!user){
+        alert("Please login first");
+        window.location.href = "/login.html";
+        return;
+    }
+    if(user.role !== "teacher"){
+        alert("Access Denied: Only teachers are allowed to upload courses.");
+        window.location.href = "/index.html";
+    }
+}
+
 /* NAVBAR LINK PROTECTION */
 
 setTimeout(() => {
@@ -219,6 +234,14 @@ alert("Please login first");
 
 window.location.href = "/login.html";
 
+} else if (link.getAttribute("href") === "upload-course.html" && user.role !== "teacher") {
+
+e.preventDefault();
+
+alert("Access Denied: Only teachers can access this section.");
+
+window.location.href = "/index.html";
+
 }
 
 });
@@ -226,6 +249,15 @@ window.location.href = "/login.html";
 });
 
 }, 200);
+
+// Global link visibility based on role
+document.addEventListener("DOMContentLoaded", function() {
+    const user = JSON.parse(localStorage.getItem("user"));
+    const uploadLinks = document.querySelectorAll('a[href="upload-course.html"]');
+    if (!user || user.role !== "teacher") {
+        uploadLinks.forEach(link => link.style.display = "none");
+    }
+});
 /* PROFILE MODAL */
 
 const profileModal = document.getElementById("profileModal");

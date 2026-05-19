@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Create Account | EduChain</title>
     <link rel="stylesheet" href="css/auth.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 </head>
 
 <body class="dark-mode">
@@ -45,6 +46,19 @@
                     <input type="password" id="password" placeholder="Password" required>
                 </div>
 
+                <div class="role-selection-container">
+                    <span class="role-label">I want to join as:</span>
+                    <div class="role-tabs">
+                        <button type="button" class="role-tab active" data-role="student">
+                            <i class='bx bx-user'></i> Student
+                        </button>
+                        <button type="button" class="role-tab" data-role="teacher">
+                            <i class='bx bx-user-plus'></i> Teacher
+                        </button>
+                    </div>
+                    <input type="hidden" id="roleInput" name="role" value="student">
+                </div>
+
                 <button type="submit" class="auth-btn">Sign Up</button>
 
             </form>
@@ -69,51 +83,74 @@
 </div>
 
 <script>
+// Role Selection Tab Switcher and Initialization
+const roleTabs = document.querySelectorAll(".role-tab");
+const roleInput = document.getElementById("roleInput");
+const googleSignUp = document.getElementById("googleSignUp");
+
+function setRole(role) {
+    roleTabs.forEach(t => {
+        if (t.getAttribute("data-role") === role) {
+            t.classList.add("active");
+        } else {
+            t.classList.remove("active");
+        }
+    });
+    roleInput.value = role;
+    if (googleSignUp) {
+        googleSignUp.href = `/auth/google?role=${role}`;
+    }
+}
+
+// Bind click events to tabs
+roleTabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+        const role = tab.getAttribute("data-role");
+        setRole(role);
+    });
+});
+
+// Check query param for initial role configuration
+const urlParams = new URLSearchParams(window.location.search);
+const queryRole = urlParams.get("role");
+if (queryRole === "teacher" || queryRole === "student") {
+    setRole(queryRole);
+} else {
+    // Default setup
+    setRole("student");
+}
 
 const signupForm = document.getElementById("signupForm");
 
 signupForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-e.preventDefault();
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const role = roleInput.value;
 
-const name = document.getElementById("name").value;
-const email = document.getElementById("email").value;
-const password = document.getElementById("password").value;
+    const response = await fetch("/api/signup", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            name,
+            email,
+            password,
+            role
+        })
+    });
 
-const response = await fetch("/api/signup",{
+    const data = await response.json();
+    alert(data.message);
 
-method:"POST",
-
-headers:{
-"Content-Type":"application/json"
-},
-
-body:JSON.stringify({
-name,
-email,
-password
-})
-
+    if (data.message === "User registered successfully" && data.user) {
+        localStorage.setItem("user", JSON.stringify(data.user));
+        window.location.href = "/index.html";
+    }
 });
-
-const data = await response.json();
-
-alert(data.message);
-
-if(data.message === "User registered successfully"){
-
-localStorage.setItem("user", JSON.stringify({
-    name: name,
-    email: email,
-    profilePic: null
-}));
-
-window.location.href="/index.html";
-
-}
-
-});
-
 </script>
 <script>
 const canvas = document.getElementById("bgCanvas");

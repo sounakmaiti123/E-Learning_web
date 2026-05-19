@@ -26,14 +26,14 @@
 <a href="face-recognition.html" class="protected-link">
 <i class='bx bx-face'></i> Face Recognition
 </a>
-<a href="upload-course.html" class="protected-link">
+<a href="upload-course.html" class="protected-link" id="uploadCourseLink">
 <i class='bx bx-upload'></i> Upload Course
 </a>
-<a href="#teacher">
+<a href="signup.html?role=teacher">
 <i class='bx bx-user-plus'></i> Join as Teacher
 </a>
 
-<a href="#student">
+<a href="signup.html?role=student">
 <i class='bx bx-user'></i> Join as Learner
 </a>
 
@@ -307,6 +307,13 @@ to help you master any skill
 document.addEventListener("DOMContentLoaded", function(){
 
 const user = JSON.parse(localStorage.getItem("user"));
+const uploadLink = document.getElementById("uploadCourseLink");
+
+if (!user || user.role !== "teacher") {
+    if (uploadLink) uploadLink.style.display = "none";
+} else {
+    if (uploadLink) uploadLink.style.display = "inline-flex";
+}
 
 if(!user) return;
 
@@ -501,8 +508,8 @@ and personalized education.
 <div class="footer-column">
 <h4>Learn With Us</h4>
 <a href="#">Browse Courses</a>
-<a href="#">Join as Student</a>
-<a href="#">Join as Teacher</a>
+<a href="signup.html?role=student">Join as Student</a>
+<a href="signup.html?role=teacher">Join as Teacher</a>
 <a href="#">EduChain Plus</a>
 </div>
 

@@ -41,7 +41,12 @@ app.use("/api", routes);
 // =====================
 
 // Start Google OAuth (used for both Sign In and Sign Up)
-app.get("/auth/google", passport.authenticate("google", {
+app.get("/auth/google", (req, res, next) => {
+    if (req.query.role) {
+        req.session.pendingRole = req.query.role;
+    }
+    next();
+}, passport.authenticate("google", {
     scope: ["profile", "email"]
 }));
 
