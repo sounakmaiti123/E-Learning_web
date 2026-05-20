@@ -1,6 +1,16 @@
 const express = require("express");
 const router = express.Router();
 const User = require("./user");
+const nodemailer = require("nodemailer");
+
+// Configure Nodemailer Transporter
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
+    }
+});
 
 
 // SIGNUP
@@ -24,6 +34,37 @@ router.post("/signup", async (req, res) => {
         });
 
         await user.save();
+
+        // Send Professional Welcome Email
+        const mailOptions = {
+            from: `"EduChain" <${process.env.EMAIL_USER}>`,
+            to: user.email,
+            subject: 'Welcome to EduChain! 🚀',
+            html: `
+                <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 30px; background-color: #ffffff; border: 1px solid #e5e7eb; border-radius: 12px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);">
+                    <div style="text-align: center; margin-bottom: 20px;">
+                        <h1 style="color: #4f46e5; margin: 0; font-size: 28px;">EduChain</h1>
+                    </div>
+                    <h2 style="color: #1f2937; font-size: 22px; text-align: center;">Welcome aboard, ${user.name}! 🎉</h2>
+                    <p style="color: #4b5563; font-size: 16px; line-height: 1.6;">We are thrilled to have you join our learning community. EduChain is designed to help you learn without boundaries, equipped with AI-powered tutoring and secure face recognition.</p>
+                    <div style="background-color: #f3f4f6; padding: 20px; border-radius: 8px; margin: 25px 0;">
+                        <h3 style="margin-top: 0; color: #1f2937; font-size: 18px;">What's next?</h3>
+                        <ul style="color: #4b5563; font-size: 16px; line-height: 1.6; padding-left: 20px; margin-bottom: 0;">
+                            <li>Browse our catalog of premium courses</li>
+                            <li>Set up your personalized profile</li>
+                            <li>Engage with the community</li>
+                        </ul>
+                    </div>
+                    <div style="text-align: center; margin: 35px 0;">
+                        <a href="${process.env.BASE_URL || 'http://localhost:3000'}/login.html" style="background-color: #4f46e5; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px; display: inline-block;">Get Started Now</a>
+                    </div>
+                    <p style="color: #6b7280; font-size: 14px; text-align: center; border-top: 1px solid #e5e7eb; padding-top: 20px; margin-bottom: 0;">If you have any questions, simply reply to this email. We're here to help!</p>
+                    <p style="color: #9ca3af; font-size: 12px; text-align: center; margin-top: 10px;">&copy; ${new Date().getFullYear()} EduChain. All Rights Reserved.</p>
+                </div>
+            `
+        };
+        
+        transporter.sendMail(mailOptions).catch(err => console.error("Error sending welcome email:", err));
 
         res.json({
             message: "User registered successfully",

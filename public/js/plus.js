@@ -3,6 +3,26 @@
 (function () {
     "use strict";
 
+    /* ---------- GLOBAL SMOOTH SCROLL (LENIS) ---------- */
+    // Note: Make sure to include the Lenis CDN in your HTML file(s)
+    if (typeof Lenis !== 'undefined') {
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            direction: 'vertical',
+            gestureDirection: 'vertical',
+            smooth: true,
+            smoothTouch: false,
+            touchMultiplier: 2,
+        });
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+    }
+
     /* ---------- BILLING TOGGLE ---------- */
     const billingToggle = document.getElementById("billingToggle");
     const monthlyLabel = document.getElementById("monthlyLabel");
@@ -176,20 +196,17 @@
     };
 
     /* ---------- SCROLL ANIMATIONS ---------- */
-    const fadeEls = document.querySelectorAll(".fade-up");
+    const fadeEls = document.querySelectorAll(".reveal-on-scroll");
     const observer = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = "1";
-                entry.target.style.transform = "translateY(0)";
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target); // Unobserve to play animation only once
             }
         });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
 
     fadeEls.forEach(function (el) {
-        el.style.opacity = "0";
-        el.style.transform = "translateY(30px)";
-        el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
         observer.observe(el);
     });
 
