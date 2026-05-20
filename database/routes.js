@@ -211,7 +211,7 @@ router.post(
             const newCourse = new Course({
                 title,
                 instructor,
-                price: parseFloat(price) || 0,
+                price: 0, // Making uploaded videos free as of now
                 description,
                 thumbnail: thumbnailUrl,
                 video: videoUrl

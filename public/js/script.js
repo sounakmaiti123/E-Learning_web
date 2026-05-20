@@ -365,17 +365,75 @@ function saveProfile(){
 
 // Plays the selected course video in a custom modal
 function playCourseVideo(videoUrl) {
-    const modal = document.getElementById("courseVideoModal");
-    const videoPlayer = document.getElementById("courseVideoPlayer");
-    const videoSource = document.getElementById("courseVideoSource");
+    let modal = document.getElementById("courseVideoModal");
+    let videoPlayer = document.getElementById("courseVideoPlayer");
+    let videoSource = document.getElementById("courseVideoSource");
+
+    // Create the modal dynamically if it doesn't exist in the HTML
+    if (!modal) {
+        modal = document.createElement("div");
+        modal.id = "courseVideoModal";
+        modal.className = "video-modal active";
+        Object.assign(modal.style, {
+            position: "fixed", top: "0", left: "0", width: "100%", height: "100%",
+            backgroundColor: "rgba(0,0,0,0.85)", zIndex: "9999", display: "flex",
+            alignItems: "center", justifyContent: "center", opacity: "1"
+        });
+
+        const overlay = document.createElement("div");
+        overlay.id = "courseVideoOverlay";
+        overlay.className = "video-overlay";
+        Object.assign(overlay.style, {
+            position: "absolute", width: "100%", height: "100%", cursor: "pointer"
+        });
+
+        const content = document.createElement("div");
+        content.className = "video-content";
+        Object.assign(content.style, {
+            position: "relative", width: "90%", maxWidth: "800px", zIndex: "10000"
+        });
+
+        const closeBtn = document.createElement("span");
+        closeBtn.id = "closeCourseVideo";
+        closeBtn.innerHTML = "&times;";
+        Object.assign(closeBtn.style, {
+            position: "absolute", top: "-40px", right: "0", color: "#fff",
+            fontSize: "30px", cursor: "pointer"
+        });
+
+        videoPlayer = document.createElement("video");
+        videoPlayer.id = "courseVideoPlayer";
+        videoPlayer.controls = true;
+        Object.assign(videoPlayer.style, {
+            width: "100%", borderRadius: "8px", backgroundColor: "#000"
+        });
+
+        videoSource = document.createElement("source");
+        videoSource.id = "courseVideoSource";
+        videoSource.type = "video/mp4";
+
+        videoPlayer.appendChild(videoSource);
+        content.appendChild(closeBtn);
+        content.appendChild(videoPlayer);
+        modal.appendChild(overlay);
+        modal.appendChild(content);
+        document.body.appendChild(modal);
+
+        const closePlayer = () => {
+            modal.style.display = "none";
+            videoPlayer.pause();
+            videoPlayer.currentTime = 0;
+        };
+
+        closeBtn.addEventListener("click", closePlayer);
+        overlay.addEventListener("click", closePlayer);
+    }
 
     if (modal && videoPlayer && videoSource) {
-        // Set the new video file source
+        modal.style.display = "flex";
         videoSource.src = videoUrl;
-        videoPlayer.load(); // Force browser to reload new source
+        videoPlayer.load();
         
-        // Show modal and start playback
-        modal.classList.add("active");
         videoPlayer.play().catch(err => console.log("Playback interaction error:", err));
     }
 }
@@ -393,8 +451,9 @@ async function loadCourses() {
             const card = document.createElement("div");
             card.className = "course-card";
             
-            // Format price
-            const formattedPrice = typeof course.price === 'number' ? course.price.toFixed(2) : parseFloat(course.price || 0).toFixed(2);
+            // Format price logic
+            const priceVal = parseFloat(course.price || 0);
+            const formattedPrice = priceVal === 0 ? "Free" : "$" + priceVal.toFixed(2);
 
             card.innerHTML = `
                 <div class="course-img" style="position: relative; cursor: pointer; overflow: hidden;">
@@ -411,7 +470,7 @@ async function loadCourses() {
                         ${course.description || "No description provided."}
                     </p>
                     <div class="course-footer">
-                        <span class="price">$${formattedPrice}</span>
+                        <span class="price">${formattedPrice}</span>
                         <button class="watch-btn" data-video="${course.video}" style="background: #6366f1;">Watch Video</button>
                     </div>
                 </div>
@@ -448,6 +507,7 @@ function initCourseApp() {
     const closePlayer = () => {
         if (modal && videoPlayer) {
             modal.classList.remove("active");
+            modal.style.display = "none";
             videoPlayer.pause();
             videoPlayer.currentTime = 0;
         }
