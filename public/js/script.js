@@ -147,31 +147,6 @@ signupForm.addEventListener("submit", async (e) => {
 
 });
 }
-fetch("/api/current-user")
-.then(res => res.json())
-.then(user => {
-
-if(user){
-
-const signinBtn = document.querySelector(".signin");
-const getStartedBtn = document.querySelector(".btn-primary");
-
-if(signinBtn) signinBtn.style.display="none";
-if(getStartedBtn) getStartedBtn.style.display="none";
-
-// Only render simple avatar if there's no custom navActions script AND no avatar is already rendered
-if(!document.getElementById("navActions") && !document.querySelector(".avatar") && !document.querySelector(".avatar-container")){
-const avatar = document.createElement("div");
-avatar.className = "avatar";
-avatar.innerText = user.name.charAt(0);
-
-const navActions = document.querySelector(".nav-actions");
-if(navActions) navActions.appendChild(avatar);
-}
-
-}
-
-});
 
 const user = JSON.parse(localStorage.getItem("user"));
 
