@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require("express");
 const path = require("path");
+const cors = require("cors");
 const connectDB = require("./database/db");
 const routes = require("./database/routes");
 
@@ -8,6 +9,15 @@ const app = express();
 
 // Connect MongoDB
 connectDB();
+
+// CORS
+app.use(cors({
+    origin: [
+        "http://localhost:3000",
+        "https://your-vercel-app.vercel.app"
+    ],
+    credentials: true
+}));
 
 // Middleware
 app.use(express.json({ limit: "10mb" }));
