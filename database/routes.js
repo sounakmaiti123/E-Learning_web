@@ -1,3 +1,4 @@
+const BASE_URL = "https://educhain-sounak-backend.onrender.com";
 const express = require("express");
 const router = express.Router();
 const User = require("./user");
@@ -205,8 +206,8 @@ router.post(
             const videoFile = req.files["video"][0];
 
             // Relative paths for frontend accessibility
-            const thumbnailUrl = `/uploads/courses/${thumbnailFile.filename}`;
-            const videoUrl = `/uploads/courses/${videoFile.filename}`;
+            const thumbnailUrl = `${BASE_URL}/uploads/courses/${thumbnailFile.filename}`;
+            const videoUrl = `${BASE_URL}/uploads/courses/${videoFile.filename}`;
 
             const newCourse = new Course({
                 title,
