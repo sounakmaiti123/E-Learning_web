@@ -14,7 +14,7 @@ connectDB();
 app.use(cors({
     origin: [
         "http://localhost:3000",
-        "https://your-vercel-app.vercel.app"
+        "https://e-learning-web-liard.vercel.app"
     ],
     credentials: true
 }));
