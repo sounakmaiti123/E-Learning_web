@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             try {
-                const response = await fetch("/api/upload-course", {
+                const response = await fetch(`${BASE_URL}/api/upload-course`, {
                     method: "POST",
                     body: formData
                 });

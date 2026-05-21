@@ -444,7 +444,7 @@ reader.onload = async function(e){
 
 let user = JSON.parse(localStorage.getItem("user"));
 
-const response = await fetch("/api/update-profile", {
+const response = await fetch(`${BASE_URL}/api/update-profile`, {
 
 method: "POST",
 headers: {

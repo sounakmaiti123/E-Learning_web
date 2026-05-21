@@ -1,3 +1,4 @@
+const BASE_URL = "https://educhain-sounak-backend.onrender.com";
 console.log("EduChain UI Loaded");
 
 /* ---------- GLOBAL SMOOTH SCROLL (LENIS) ---------- */
@@ -126,7 +127,7 @@ signupForm.addEventListener("submit", async (e) => {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
-    const response = await fetch("/api/signup", {
+    const response = await fetch(`${BASE_URL}/api/signup`, {
 
         method: "POST",
         headers: {
@@ -311,7 +312,7 @@ function saveProfile(){
 
         let user = JSON.parse(localStorage.getItem("user"));
 
-        const res = await fetch("/api/update-profile", {
+        const res = await fetch(`${BASE_URL}/api/update-profile`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -419,7 +420,7 @@ async function loadCourses() {
     if (!grid) return;
 
     try {
-        const res = await fetch("/api/courses");
+        const res = await fetch(`${BASE_URL}/api/courses`);
         const courses = await res.json();
 
         courses.forEach(course => {
